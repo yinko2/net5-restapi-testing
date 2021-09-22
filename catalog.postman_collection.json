@@ -1,0 +1,131 @@
+{
+	"info": {
+		"_postman_id": "38a08312-b0bc-4750-8451-a5931086c5c7",
+		"name": "NET 5",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Items",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/items?name=sword",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"items"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "sword"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Item",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Bronze Sword\",\r\n    \"description\": \"Rusted sword for beginners\",\r\n    \"price\": 15\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/items",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"items"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put item",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"Bronze Sword\",\r\n    \"price\" : 30\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/items/b5c630df-2f55-4c76-8f54-0274ff02b711",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"items",
+						"b5c630df-2f55-4c76-8f54-0274ff02b711"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete item",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/items/6cd4eeff-2a38-4c7e-9793-24fbb030439b",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"items",
+						"6cd4eeff-2a38-4c7e-9793-24fbb030439b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Healthy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/health/ready",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"health",
+						"ready"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

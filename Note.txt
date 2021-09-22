@@ -1,0 +1,50 @@
+docker run -d --rm --name mongo -p 27017:27017 -v mongodbdata:/data/db mongo
+docker ps
+docker stop mongo
+docker volume ls
+docker volumer rm mongodbdata 
+docker run -d --rm --name mongo -p 27017:27017 -v mongodbdata:/data/db -e MONGO_INITDB_ROOT_USERNAME=mongoadmin -e MONGO_INITDB_ROOT_PASSWORD=Password1 mongo
+
+dotnet user-secrets init >> .net secrets manager
+dotnet user-secrets set MongoDbSettings:Password Password1
+https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks
+
+view >> command palette
+docker: add docker
+
+docker build -t catalog:v1 .
+docker network create net5tutorial
+docker run -d --rm --name mongo -p 27017:27017 -v mongodbdata:/data/db -e MONGO_INITDB_ROOT_USERNAME=mongoadmin -e MONGO_INITDB_ROOT_PASSWORD=Password1 --network=net5tutorial mongo
+docker run -it --rm -p 8080:80 -e MongoDbSettings:Host=mongo -e MongoDbSettings:Password=Password1 --network=net5tutorial catalog:v1
+
+docker login
+docker tag catalog:v1 yinko2/catalog:v1 
+docker push yinko2/catalog:v1 
+docker rmi yinko2/catalog:v1
+docker logout
+
+kubectl config current-context
+kubectl create secret generic catalog-secrets --from-literal=mongodb-password='Password1'
+kubectl delete secret catalog-secrets
+cd kubernetes
+kubectl apply -f catalog.yaml
+kubectl get deployments
+kubectl get pods
+kubectl describe pod catalog-deployment-67ddf4b8ff-lvshz
+
+Headless serice >> mongodbyaml
+kubectl apply -f .\mongodb.yaml
+ kubectl get statefulsets
+ kubectl describe pod catalog-deployment-67ddf4b8ff-458hf
+
+kubectl get pods -w
+kubectl logs mongodb-statefulset-0 -f
+kubectl scale deployments/catalog-deployment --replicas=2
+
+
+dotnet new xunit -n catalog.UnitTests
+dotnet add reference ..\catalog.api\catalog.api.csproj
+dotnet add package Microsoft.Extensions.Logging.Abstractions
+dotnet add package moq
+dotnet test
+dotnet add package FluentAssertions
